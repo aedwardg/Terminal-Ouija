@@ -1,7 +1,16 @@
 const inquirer = require('inquirer');
 
 const q = module.exports;
-q.question1 = [
+
+q.playQ = [
+    {
+        type: 'confirm',
+        name: 'play',
+        message: 'Ouija boards are not toys. Are you sure you want to continue?'
+    }
+];
+
+q.nameQ = [
     {
         type: 'input',
         name: 'name',
@@ -19,7 +28,7 @@ q.question1 = [
     }
 ];
 
-q.question2 = [
+q.friendsQ = [
     {
         type: 'checkbox',
         name: 'friends',

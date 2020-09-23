@@ -1,36 +1,42 @@
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 const chalkAnimation = require('chalk-animation');
-const q = require('./questions');
+const qs = require('./questions');
 
 module.exports = {
-    questionOne: () => {
-        inquirer.prompt(q.question1)
+    play: async () => {
+        await inquirer.prompt(qs.playQ)
+            .then(answer => {
+                if (answer.play.lower === 'y') {
+                    console.log('Very well. Good luck.')
+                }
+            });
+    },
+    playerName: async () => {
+        
+        await inquirer.prompt(qs.nameQ)
             .then(answer => {
                 console.clear();
                 console.log(`Hello, ${answer.name}`);
-                module.exports.questionTwo();
+                // module.exports.friendNames();
+            })
+            .then(() => {
+                return this.name;
             });
+        
     },
-    questionTwo: () => {
-        inquirer.prompt(q.question2)
+    friendNames: async () => {
+        await inquirer.prompt(qs.friendsQ)
             .then(answers => {
                 console.clear();
                 console.log('So...');
                 answers.friends.forEach(friend => {
-                    if (['Jerry', 'George'].includes(friend)) {
+                    if (['Hannibal Lecter', 'Norman Bates'].includes(friend)) {
                         console.log(`${friend} is on your ${chalk.red('left')}`);
                     } else {
                         console.log(chalk.redBright(`${friend} is on your right.`));
                     }
                 });
-                console.log('\n\n\n\n');
-                const glitch = chalkAnimation.glitch(`${chalk.red('You are dead')}`);
-                setTimeout(() => {
-                    glitch.stop();
-                    console.clear();
-                    console.log('test');
-                }, 5000);
             });
     }
 };
