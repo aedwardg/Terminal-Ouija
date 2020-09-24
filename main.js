@@ -1,20 +1,18 @@
 'use strict';
 
+// External packages
 const chalk = require('chalk');
 const inquirer = require('inquirer');
 const chalkAnimation = require('chalk-animation');
 const { Subject } = require('rxjs');
 
+// External files
 const ask = require('./ask-functions');
 const animations = require('./animations');
 const qs = require('./questions');
 const story = require('./narrative');
 
-
-// let name = '';
-
-let friends = {};
-
+// TODO: Decide whether to keep this function here
 function sleep(ms) {
     return new Promise((resolve) => {
       setTimeout(resolve, ms);
@@ -22,28 +20,39 @@ function sleep(ms) {
   }
 
 async function run() {
-    // console.clear();
-    // const introAnimation = chalkAnimation.pulse(story.intro);
-    // await sleep(6000);
-    // introAnimation.stop();
+    // Opening Animation
     await animations.startIntro();
-    await ask.play();
-    await ask.playerName();
-    await ask.friendNames();
-    await animations.startGlitch(`${chalk.red('You are dead')}`);
 
-    // let prompts = new Subject();
-    // inquirer.prompt(prompts)
-    // .then(answer => {
-    //     if (answer.play.lower === 'y') {
-    //         console.log('Very well. Good luck.')
-    //     }
-    // });
-    // prompts.next(
-    //     qs.playQ[0]
-    // );
+    // Ask User if they want to play
+    const willPlay = await ask.play();
+    if (!willPlay) { return 0; }
     
-    console.log('testing...')
-};
+    // Ask for and save player name
+    const playerName = await ask.playerName();
+    console.log(`Saved name: ${playerName}`);
 
-run();
+    // TODO: save friend names in array or dictionary
+    await ask.friendNames();
+
+    // Death Animation
+    await animations.startGlitch(`${chalk.red('You are dead')}`);
+    
+    // Reveal the killer;
+    await animations.finalImage();
+  };
+  
+  run();
+
+// Example of using Rx.Subject() and adding new
+// questions to prompt:
+
+  // let prompts = new Subject();
+  // inquirer.prompt(prompts)
+  // .then(answer => {
+  //     if (answer.play.lower === 'y') {
+  //         console.log('Very well. Good luck.')
+  //     }
+  // });
+  // prompts.next(
+  //     qs.playQ[0]
+  // );

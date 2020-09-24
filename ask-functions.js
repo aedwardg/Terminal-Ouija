@@ -5,25 +5,22 @@ const qs = require('./questions');
 
 module.exports = {
     play: async () => {
-        await inquirer.prompt(qs.playQ)
-            .then(answer => {
-                if (answer.play.lower === 'y') {
-                    console.log('Very well. Good luck.')
-                }
-            });
+        const answer = await inquirer.prompt(qs.playQ);
+        
+        if (answer.play) {
+            console.log('Very well. Good luck.');
+        } else {
+            console.log('Wise Choice.')
+        }
+        return answer.play;
     },
     playerName: async () => {
         
-        await inquirer.prompt(qs.nameQ)
-            .then(answer => {
-                console.clear();
-                console.log(`Hello, ${answer.name}`);
-                // module.exports.friendNames();
-            })
-            .then(() => {
-                return this.name;
-            });
-        
+        const answer = await inquirer.prompt(qs.nameQ);
+        console.clear();
+        console.log(`Hello, ${answer.name}`);
+        return answer.name;
+
     },
     friendNames: async () => {
         await inquirer.prompt(qs.friendsQ)

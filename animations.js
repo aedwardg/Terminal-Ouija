@@ -1,5 +1,6 @@
 // functions for text and color animations here?
 
+const chalk = require('chalk');
 const chalkAnimation = require('chalk-animation');
 
 const story = require('./narrative');
@@ -25,7 +26,13 @@ async function startGlitch(message) {
     console.clear();
 }
 
+async function finalImage() {
+  console.clear();
+  console.log(chalk.red(story.freddyBW));
+}
+
 module.exports = {
     startIntro: startIntro,
     startGlitch: startGlitch,
+    finalImage: finalImage,
 }
