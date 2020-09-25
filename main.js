@@ -31,7 +31,8 @@ async function run() {
     await animations.startGlitch(`${chalk.red('You are dead')}`);
     
     // Reveal the killer;
-    await animations.finalImage();
+    let killer = art.carrie;
+    await animations.finalImage(killer);
   };
   
   run();

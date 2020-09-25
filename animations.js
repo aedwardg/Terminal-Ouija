@@ -26,9 +26,9 @@ async function startGlitch(message) {
     console.clear();
 }
 
-async function finalImage() {
+async function finalImage(killer) {
   console.clear();
-  console.log(chalk.red(art.freddy));
+  console.log(chalk.red(killer));
 }
 
 module.exports = {
