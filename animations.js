@@ -3,7 +3,7 @@
 const chalk = require('chalk');
 const chalkAnimation = require('chalk-animation');
 
-const story = require('./narrative');
+const art = require('./art');
 
 function sleep(ms) {
     return new Promise((resolve) => {
@@ -13,7 +13,7 @@ function sleep(ms) {
 
 async function startIntro() {
     console.clear();
-    const introAnimation = chalkAnimation.pulse(story.intro);
+    const introAnimation = chalkAnimation.pulse(art.intro);
     await sleep(6000);
     introAnimation.stop();
 }
@@ -28,10 +28,11 @@ async function startGlitch(message) {
 
 async function finalImage() {
   console.clear();
-  console.log(chalk.red(story.freddyBW));
+  console.log(chalk.red(art.freddy));
 }
 
 module.exports = {
+    sleep: sleep,
     startIntro: startIntro,
     startGlitch: startGlitch,
     finalImage: finalImage,

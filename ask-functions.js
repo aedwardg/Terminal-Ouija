@@ -1,7 +1,11 @@
+// External packages
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 const chalkAnimation = require('chalk-animation');
+
+// External Files
 const qs = require('./questions');
+const { sleep } = require('./animations');
 
 module.exports = {
     play: async () => {
@@ -9,6 +13,8 @@ module.exports = {
         
         if (answer.play) {
             console.log('Very well. Good luck.');
+            await sleep(2000);
+            console.clear();
         } else {
             console.log('Wise Choice.')
         }
@@ -23,17 +29,16 @@ module.exports = {
 
     },
     friendNames: async () => {
-        await inquirer.prompt(qs.friendsQ)
-            .then(answers => {
-                console.clear();
-                console.log('So...');
-                answers.friends.forEach(friend => {
-                    if (['Hannibal Lecter', 'Norman Bates'].includes(friend)) {
-                        console.log(`${friend} is on your ${chalk.red('left')}`);
-                    } else {
-                        console.log(chalk.redBright(`${friend} is on your right.`));
-                    }
-                });
-            });
+        let answers = await inquirer.prompt(qs.friendsQ);
+        console.clear();
+        console.log('So...');
+        answers.friends.forEach(friend => {
+            if (['Hannibal Lecter', 'Norman Bates'].includes(friend)) {
+                console.log(`${friend} is on your ${chalk.red('left')}`);
+            } else {
+                console.log(chalk.redBright(`${friend} is on your right.`));
+            }
+        });
+        return answers.friends
     }
 };

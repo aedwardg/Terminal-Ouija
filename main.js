@@ -10,14 +10,7 @@ const { Subject } = require('rxjs');
 const ask = require('./ask-functions');
 const animations = require('./animations');
 const qs = require('./questions');
-const story = require('./narrative');
-
-// TODO: Decide whether to keep this function here
-function sleep(ms) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, ms);
-    });
-  }
+const art = require('./art');
 
 async function run() {
     // Opening Animation
@@ -29,10 +22,10 @@ async function run() {
     
     // Ask for and save player name
     const playerName = await ask.playerName();
-    console.log(`Saved name: ${playerName}`);
 
     // TODO: save friend names in array or dictionary
-    await ask.friendNames();
+    let friendNames = await ask.friendNames();
+    
 
     // Death Animation
     await animations.startGlitch(`${chalk.red('You are dead')}`);
