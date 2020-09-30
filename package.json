@@ -1,0 +1,26 @@
+{
+  "name": "terminalouija",
+  "version": "1.0.0",
+  "description": "Terminal-based \"choose your own adventure\" with a dark twist. (Ages 10+)",
+  "main": "main.js",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "chalk-animation": "^1.6.0",
+    "inquirer": "^7.3.3",
+    "terminal-kit": "^1.43.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aedwardg/Terminal-Ouija.git"
+  },
+  "author": "aedwardg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aedwardg/Terminal-Ouija/issues"
+  },
+  "homepage": "https://github.com/aedwardg/Terminal-Ouija#readme"
+}
