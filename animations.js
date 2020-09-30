@@ -1,8 +1,10 @@
-// functions for text and color animations here?
+'use strict';
 
+// External packages
 const chalk = require('chalk');
 const chalkAnimation = require('chalk-animation');
 
+// External Files
 const art = require('./art');
 
 function sleep(ms) {
@@ -10,6 +12,13 @@ function sleep(ms) {
       setTimeout(resolve, ms);
     });
   }
+
+async function speak(script) {
+  for (const line of script) {
+    console.log(line);
+    await sleep(2500);
+  };
+}
 
 async function startIntro() {
     console.clear();
@@ -33,6 +42,7 @@ async function finalImage(killer) {
 
 module.exports = {
     sleep: sleep,
+    speak: speak,
     startIntro: startIntro,
     startGlitch: startGlitch,
     finalImage: finalImage,

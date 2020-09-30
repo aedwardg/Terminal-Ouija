@@ -11,10 +11,14 @@ const ask = require('./ask-functions');
 const animations = require('./animations');
 const qs = require('./questions');
 const art = require('./art');
+const story = require('./story.js');
+const { speak } = require('./animations');
 
 async function run() {
     // Opening Animation
     await animations.startIntro();
+
+    await animations.speak(story.intro);
 
     // Ask User if they want to play
     const willPlay = await ask.play();
@@ -23,14 +27,14 @@ async function run() {
     // Ask for and save player name
     const playerName = await ask.playerName();
 
-    // TODO: save friend names in array or dictionary
+    // Ask player who else is playing
     let friendNames = await ask.friendNames();
-    
 
     // Death Animation
     await animations.startGlitch(`${chalk.red('You are dead')}`);
     
     // Reveal the killer;
+    // TODO: assign killer based on choices
     let killer = art.carrie;
     await animations.finalImage(killer);
   };

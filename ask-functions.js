@@ -1,3 +1,5 @@
+'use strict';
+
 // External packages
 const inquirer = require('inquirer');
 const chalk = require('chalk');
@@ -24,7 +26,7 @@ module.exports = {
         
         const answer = await inquirer.prompt(qs.nameQ);
         console.clear();
-        console.log(`Hello, ${answer.name}`);
+        console.log(`Welcome, ${answer.name}`);
         return answer.name;
 
     },
