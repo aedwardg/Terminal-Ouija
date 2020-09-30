@@ -9,15 +9,18 @@ const art = require('./art');
 
 function sleep(ms) {
     return new Promise((resolve) => {
-      setTimeout(resolve, ms);
+        setTimeout(resolve, ms);
     });
   }
 
 async function speak(script) {
-  for (const line of script) {
-    console.log(line);
-    await sleep(2500);
-  };
+    for (const line of script) {
+        for (const letter of line) {
+            process.stdout.write(letter);
+            await sleep(50);
+        }
+        await sleep(2500);
+    };
 }
 
 async function startIntro() {
@@ -36,8 +39,8 @@ async function startGlitch(message) {
 }
 
 async function finalImage(killer) {
-  console.clear();
-  console.log(chalk.red(killer));
+    console.clear();
+    console.log(chalk.red(killer));
 }
 
 module.exports = {

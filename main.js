@@ -17,13 +17,13 @@ const { speak } = require('./animations');
 async function run() {
     // Opening Animation
     await animations.startIntro();
-
-    await animations.speak(story.intro);
+      
+    await speak(story.intro);
 
     // Ask User if they want to play
     const willPlay = await ask.play();
     if (!willPlay) { return 0; }
-    
+
     // Ask for and save player name
     const playerName = await ask.playerName();
 
@@ -32,25 +32,25 @@ async function run() {
 
     // Death Animation
     await animations.startGlitch(`${chalk.red('You are dead')}`);
-    
+
     // Reveal the killer;
     // TODO: assign killer based on choices
     let killer = art.carrie;
     await animations.finalImage(killer);
-  };
+};
   
-  run();
+run();
 
 // Example of using Rx.Subject() and adding new
 // questions to prompt:
 
-  // let prompts = new Subject();
-  // inquirer.prompt(prompts)
-  // .then(answer => {
-  //     if (answer.play.lower === 'y') {
-  //         console.log('Very well. Good luck.')
-  //     }
-  // });
-  // prompts.next(
-  //     qs.playQ[0]
-  // );
+//     let prompts = new Subject();
+//     inquirer.prompt(prompts)
+//     .then(answer => {
+//         if (answer.play.lower === 'y') {
+//             console.log('Very well. Good luck.')
+//         }
+//     });
+//     prompts.next(
+//         qs.playQ[0]
+//     );
