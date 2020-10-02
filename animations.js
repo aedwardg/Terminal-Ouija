@@ -21,6 +21,8 @@ async function speak(script) {
         }
         await sleep(2500);
     };
+    // add an extra newline after "speaking"
+    console.log('');
 }
 
 async function startIntro() {

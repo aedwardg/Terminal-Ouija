@@ -9,10 +9,11 @@ const { Subject } = require('rxjs');
 // External files
 const ask = require('./ask-functions');
 const animations = require('./animations');
+const { speak } = require('./animations');
 const qs = require('./questions');
 const art = require('./art');
 const story = require('./story.js');
-const { speak } = require('./animations');
+const { player } = require('./player');
 
 async function run() {
     // Opening Animation
@@ -21,22 +22,23 @@ async function run() {
     await speak(story.intro);
 
     // Ask User if they want to play
-    const willPlay = await ask.play();
-    if (!willPlay) { return 0; }
+    player.willPlay = await ask.play();
+    if (!player.willPlay) { return 0; }
 
     // Ask for and save player name
-    const playerName = await ask.playerName();
+    player.name = await ask.playerName();
 
     // Ask player who else is playing
-    let friendNames = await ask.friendNames();
+    player.villainNames = await ask.villainNames();
+    
+    // set random killer
+    player.killer = player.selectKiller(player.villainNames);
 
     // Death Animation
     await animations.startGlitch(`${chalk.red('You are dead')}`);
 
     // Reveal the killer;
-    // TODO: assign killer based on choices
-    let killer = art.carrie;
-    await animations.finalImage(killer);
+    await animations.finalImage(player.killerArt);
 };
   
 run();

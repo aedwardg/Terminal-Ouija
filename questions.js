@@ -31,11 +31,11 @@ q.nameQ = [
     }
 ];
 
-q.friendsQ = [
+q.villainsQ = [
     {
         type: 'checkbox',
-        name: 'friends',
-        message: 'Who is with you?',
+        name: 'villains',
+        message: 'Who is sitting at the table with you?',
         choices: [
             new inquirer.Separator(' = On your left = '),
             {
@@ -62,7 +62,11 @@ q.friendsQ = [
         // loop: false,
         validate: function (answer) {
             if (answer.length < 1) {
-                return 'You cannot use a Ouija board alone! Which friend will you invite to join you?';
+                message = `
+                You cannot use a Ouija board alone!
+                Take a closer look...who else is sitting at the table?
+                `;
+                return message;
             }
             return true;
         }

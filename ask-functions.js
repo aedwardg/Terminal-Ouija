@@ -10,7 +10,7 @@ const qs = require('./questions');
 const { sleep } = require('./animations');
 
 module.exports = {
-    play: async () => {
+    async play() {
         const answer = await inquirer.prompt(qs.playQ);
         
         if (answer.play) {
@@ -18,29 +18,31 @@ module.exports = {
             await sleep(2000);
             console.clear();
         } else {
-            console.log('Wise Choice.')
+            console.log('Wise Choice.');
         }
+
         return answer.play;
     },
-    playerName: async () => {
-        
+    async playerName() {
         const answer = await inquirer.prompt(qs.nameQ);
         console.clear();
         console.log(`Welcome, ${answer.name}`);
         return answer.name;
-
     },
-    friendNames: async () => {
-        let answers = await inquirer.prompt(qs.friendsQ);
+    async villainNames() {
+        const leftSeats = ['Hannibal Lecter', 'Norman Bates', 'Freddy Krueger']
+        const answers = await inquirer.prompt(qs.villainsQ);
         console.clear();
         console.log('So...');
-        answers.friends.forEach(friend => {
-            if (['Hannibal Lecter', 'Norman Bates'].includes(friend)) {
-                console.log(`${friend} is on your ${chalk.red('left')}`);
+
+        answers.villains.forEach(villain => {
+            if (leftSeats.includes(villain)) {
+                console.log(`${villain} is on your ${chalk.red('LEFT')}.`);
             } else {
-                console.log(chalk.redBright(`${friend} is on your right.`));
+                console.log(`${villain} is on your ${chalk.red('RIGHT')}.`);
             }
         });
-        return answers.friends
-    }
+
+        return answers.villains;
+    }, 
 };
