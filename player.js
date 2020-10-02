@@ -19,6 +19,13 @@ const player = {
         }
     },
 
+    _gameBoard: {
+        letters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        numbers: '1234567890',
+        yesNo: ['YES', 'NO'],
+        goodBye: 'GOOD BYE'
+    },
+
     selectKiller(suspectList) {
         const index = Math.floor(Math.random() * suspectList.length);
         return suspectList[index];
