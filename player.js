@@ -5,7 +5,10 @@ const art = require('./art');
 
 // Base player object
 const player = {
-    
+    name: null,
+    willPlay: null,
+    _choices: [],
+
     _villains: {
         names: [],
         killer: null,
@@ -17,13 +20,6 @@ const player = {
             'Carrie White': art.carrie,
             'Jason Voorhees': art.jason
         }
-    },
-
-    _gameBoard: {
-        letters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-        numbers: '1234567890',
-        yesNo: ['YES', 'NO'],
-        goodBye: 'GOOD BYE'
     },
 
     selectKiller(suspectList) {
@@ -49,10 +45,27 @@ const player = {
 
     get killerArt() {
         return this._villains.art[this.killer];
-    }
+    },
+
+    get choices() {
+        return this._choices;
+    },
+
+    set choices(choice) {
+        this._choices.push(choice);
+    },
 
 }
 
+const gameBoard = {
+    letters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    numbers: '1234567890',
+    yesNo: ['YES', 'NO'],
+    goodBye: 'GOOD BYE',
+    lettersUsed: []
+}
+
 module.exports = {
-    player: player
+    player: player,
+    gameBoard: gameBoard
 }

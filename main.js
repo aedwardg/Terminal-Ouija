@@ -13,7 +13,7 @@ const { speak } = require('./animations');
 const qs = require('./questions');
 const art = require('./art');
 const story = require('./story.js');
-const { player } = require('./player');
+const { player, gameBoard } = require('./player');
 
 async function run() {
     // Opening Animation
@@ -33,6 +33,11 @@ async function run() {
     
     // set random killer
     player.killer = player.selectKiller(player.villainNames);
+
+    player.choices = await ask.chooseLetter();
+
+    //console.log(player.choices);
+    //console.log(gameBoard.lettersUsed);
 
     // Death Animation
     await animations.startGlitch(`${chalk.red('You are dead')}`);
