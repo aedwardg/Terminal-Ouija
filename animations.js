@@ -19,7 +19,7 @@ async function speak(script) {
             process.stdout.write(letter);
             await sleep(50);
         }
-        await sleep(2500);
+        await sleep(2000);
     };
     // add an extra newline after "speaking"
     console.log('');
