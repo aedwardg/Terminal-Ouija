@@ -7,8 +7,11 @@ const chalkAnimation = require('chalk-animation');
 
 // External Files
 const qs = require('./questions');
+const fn = require('./functions');
+const story = require('./story.js');
 const { sleep, speak } = require('./animations');
 const { player, gameBoard } = require('./player');
+const { pickRandomChar } = require('./functions');
 
 module.exports = {
     async play() {
@@ -56,20 +59,20 @@ module.exports = {
         const name = player.name;
         const charList = gameBoard.letters;
 
-        let nameLetter = name.substr(Math.floor(Math.random() * name.length), 1);
+        let nameLetter = fn.pickRandomChar(name);
 
         while (chosen.includes(nameLetter)) {
-            nameLetter = name.substr(Math.floor(Math.random() * name.length), 1);
+            nameLetter = fn.pickRandomChar(name);
         }
 
         chosen.push(nameLetter.toUpperCase());
 
-        let letter = charList.substr(Math.floor(Math.random() * charList.length), 1);
+        let letter = fn.pickRandomChar(charList);
 
         for (let i = 0; i < 3; i++) {
 
             while (chosen.includes(letter) || gameBoard.lettersUsed.includes(letter)) {
-                letter = charList.substr(Math.floor(Math.random() * charList.length), 1);
+                letter = fn.pickRandomChar(charList);
             }
     
             chosen.push(letter);
@@ -88,12 +91,48 @@ module.exports = {
         console.clear();
         await sleep(1000);
         
-        // TODO: make this have multiple messages
-        await speak([`As if by magic, the planchette slowly glides to the letter ${chalk.red(answer.letter)}`]);
+        const line = fn.pickRandom(story.letterSelect);
+        await speak([line + `${chalk.red(answer.letter)}`]);
         console.clear();
 
         // answer.letter is a one-element array, so string interpolation works,
         // but we need to return the first element here.
         return answer.letter[0];
+    },
+
+    async chooseNumber() {
+        const chosen = [];
+        const numList = gameBoard.numbers;
+
+        let num = fn.pickRandomChar(numList);
+
+        for (let i = 0; i < 3; i++) {
+
+            while (chosen.includes(num)) {
+                num = fn.pickRandomChar(numList);
+            }
+    
+            chosen.push(num);
+        }
+
+        const currentChoices = [];
+
+        chosen.forEach(choice => {
+            currentChoices.push({ name: choice });
+        });
+
+        qs.numberQ[0].choices = currentChoices;
+
+        const answer = await inquirer.prompt(qs.numberQ);
+        console.clear();
+        await sleep(1000);
+        
+        const line = fn.pickRandom(story.numberSelect);
+        await speak([line + `${chalk.red(answer.number)}`]);
+        console.clear();
+
+        // answer.letter is a one-element array, so string interpolation works,
+        // but we need to return the first element here.
+        return answer.number[0];
     }
 };

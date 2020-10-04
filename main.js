@@ -34,16 +34,36 @@ async function run() {
     // set random killer
     player.killer = player.selectKiller(player.villainNames);
 
-    player.choices = await ask.chooseLetter();
+    // while not all letters in name have been picked:
+    for (let i=0; i < 2; i++) {
+        player.choices = await ask.chooseLetter();
+    }
 
-    //console.log(player.choices);
-    //console.log(gameBoard.lettersUsed);
+    // CHOOSE NUMBER HERE
+    player.choices = await ask.chooseNumber();
+
+    for (let i=0; i < 2; i++) {
+        player.choices = await ask.chooseLetter();
+    }
+
+    // YES/NO QUESTION HERE
+
+    for (let i=0; i < 2; i++) {
+        player.choices = await ask.chooseLetter();
+    }
+
+    // KILL VILLAIN HERE?
+    // RESET gameBoard.lettersUsed
+    // end while loop
+
+    console.log(player.choices);
+    console.log(gameBoard.lettersUsed);
 
     // Death Animation
-    await animations.startGlitch(`${chalk.red('You are dead')}`);
+    //await animations.startGlitch(`${chalk.red('You are dead')}`);
 
     // Reveal the killer;
-    await animations.finalImage(player.killerArt);
+    //await animations.finalImage(player.killerArt);
 };
   
 run();
