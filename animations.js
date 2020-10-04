@@ -50,23 +50,8 @@ async function flashlight(message, ms, speed = 1)  {
 }
 
 async function printGameBoard() {
-    // TODO: MOVE THESE TO GAMEBOARD OBJECT
-    const board1 =`
-        YES            NO    
-    A B C D E F G H I J K L M
-    N O P Q R S T U V W X Y Z
-       1 2 3 4 5 6 7 8 9 0   
-             GOOD BYE        
-    `;
-
-    const board2 = [
-        `    YES            NO    `,
-        `A B C D E F G H I J K L M`,
-        `N O P Q R S T U V W X Y Z`,
-        `   1 2 3 4 5 6 7 8 9 0   `,
-        `         GOOD BYE        `
-    ];
-
+    const board1 = gameBoard.boards.board1;
+    const board2 = gameBoard.boards.board2;
     const boards = [board1, board2];
 
     const selection = pickRandom(boards);
@@ -97,6 +82,12 @@ async function showFinalChoices() {
     await speak([choices]);
 }
 
+async function printDeathNote() {
+    console.log('\n');
+    console.log(chalk.red(player.notes));
+    console.log('\n');
+}
+
 async function finalImage(killer) {
     console.clear();
     console.log(chalk.red(killer));
@@ -110,5 +101,6 @@ module.exports = {
     flashlight: flashlight,
     printGameBoard: printGameBoard,
     showFinalChoices: showFinalChoices,
+    printDeathNote: printDeathNote,
     finalImage: finalImage,
 }

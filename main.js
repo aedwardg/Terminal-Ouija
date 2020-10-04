@@ -59,10 +59,12 @@ async function run() {
     }
         
     // KILL VILLAIN HERE?
+    // Add to notes that villain died.
     // RESET gameBoard.lettersUsed
     // end while loop
         
-    animations.showFinalChoices();
+    await animations.showFinalChoices();
+    animations.printDeathNote();
 
     // Death Animation
     //await animations.startGlitch(`${chalk.red('You are dead')}`);

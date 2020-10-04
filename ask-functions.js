@@ -131,7 +131,7 @@ module.exports = {
         await speak([line + `${chalk.red(answer.number)}`]);
         console.clear();
 
-        // answer.letter is a one-element array, so string interpolation works,
+        // answer.number is a one-element array, so string interpolation works,
         // but we need to return the first element here.
         return answer.number[0];
     },
@@ -155,7 +155,7 @@ module.exports = {
         await speak([line + `${chalk.red(answer.yesNo)}`]);
         console.clear();
 
-        // answer.letter is a one-element array, so string interpolation works,
+        // answer.yesNo is a one-element array, so string interpolation works,
         // but we need to return the first element here.
         return answer.yesNo[0];
     }

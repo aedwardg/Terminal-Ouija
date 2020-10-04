@@ -8,6 +8,7 @@ const player = {
     name: null,
     willPlay: null,
     _choices: [],
+    _notes: [],
 
     _villains: {
         names: [],
@@ -53,11 +54,36 @@ const player = {
 
     set choices(choice) {
         this._choices.push(choice);
+        this._notes.push(choice);
+    },
+
+    get notes() {
+        return this._notes.toString().replace(/,/g, ' ');
+    },
+
+    set notes(note) {
+        this._notes.push(note);
     },
 
 }
 
 const gameBoard = {
+    boards: {
+        board1: `
+        YES            NO    
+    A B C D E F G H I J K L M
+    N O P Q R S T U V W X Y Z
+       1 2 3 4 5 6 7 8 9 0   
+             GOOD BYE        
+        `,
+        board2: [
+            `    YES            NO    `,
+            `A B C D E F G H I J K L M`,
+            `N O P Q R S T U V W X Y Z`,
+            `   1 2 3 4 5 6 7 8 9 0   `,
+            `         GOOD BYE        `
+        ]
+    },
     letters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
     numbers: '1234567890',
     yesNo: ['YES', 'NO'],
