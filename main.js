@@ -35,39 +35,56 @@ async function run() {
     player.killer = player.selectKiller(player.villainNames);
 
     // while not all letters in name have been picked:
-    for (let i=0; i < 2; i++) {
+    const splitName = player.name.toUpperCase().split('');
+
+    while (!splitName.every(e => player.choices.includes(e))) {
+        // Choose 2 letters
+        for (let i=0; i < 2; i++) {
+            await animations.printGameBoard();
+            player.choices = await ask.chooseLetter();
+        }
+    
+        // Choose number
         await animations.printGameBoard();
-        player.choices = await ask.chooseLetter();
+        player.choices = await ask.chooseNumber();
+
+        // Check and break
+        if (splitName.every(e => player.choices.includes(e))) break;
+        
+        // Choose 2 more letters
+        for (let i=0; i < 2; i++) {
+            await animations.printGameBoard();
+            player.choices = await ask.chooseLetter();
+        }
+            
+        // Yes/No question
+        await animations.printGameBoard();
+        player.choices = await ask.chooseYesNo();
+
+        // Check and break
+        if (splitName.every(e => player.choices.includes(e))) break;
+        
+        // Choose two final letters
+        for (let i=0; i < 2; i++) {
+            await animations.printGameBoard();
+            player.choices = await ask.chooseLetter();
+        }
+            
+        // KILL VILLAIN HERE?
+        // Add to notes that villain died.
+        // RESET gameBoard.lettersUsed
+        gameBoard.lettersUsed = [];
+        // end while loop
     }
 
-    // CHOOSE NUMBER HERE
-    await animations.printGameBoard();
-    player.choices = await ask.chooseNumber();
-    
-    for (let i=0; i < 2; i++) {
-        await animations.printGameBoard();
-        player.choices = await ask.chooseLetter();
-    }
-        
-    // YES/NO QUESTION HERE
-    await animations.printGameBoard();
-    player.choices = await ask.chooseYesNo();
-    
-    for (let i=0; i < 2; i++) {
-        await animations.printGameBoard();
-        player.choices = await ask.chooseLetter();
-    }
-        
-    // KILL VILLAIN HERE?
-    // Add to notes that villain died.
-    // RESET gameBoard.lettersUsed
-    // end while loop
         
     await animations.showFinalChoices();
+    
+    // Death Animation
+    await animations.startGlitch(`${chalk.red('You are dead')}`);
+
     animations.printDeathNote();
 
-    // Death Animation
-    //await animations.startGlitch(`${chalk.red('You are dead')}`);
 
     // Reveal the killer;
     //await animations.finalImage(player.killerArt);

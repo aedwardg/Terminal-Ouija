@@ -80,6 +80,20 @@ async function showFinalChoices() {
 
     choices = choices.toString().replace(/,/g, ' ');
     await speak([choices]);
+    await speak(['And then it finally clicks...']);
+    console.log(chalk.red(name));
+    await sleep(1000);
+    await speak([`...and the last thing you see is ${chalk.red('RED')}.`]);
+
+    let time = 1000;
+    for (let i = 0; i < 50; i++) {
+        console.log(chalk.red(name));
+        await (sleep(time));
+        time /= 1.2;
+    }
+
+    console.clear();
+    await sleep(1000);
 }
 
 async function printDeathNote() {
