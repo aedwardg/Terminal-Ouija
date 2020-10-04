@@ -134,5 +134,29 @@ module.exports = {
         // answer.letter is a one-element array, so string interpolation works,
         // but we need to return the first element here.
         return answer.number[0];
+    },
+
+    async chooseYesNo() {
+        const yesNoList = gameBoard.yesNo;
+
+        const currentChoices = [];
+
+        yesNoList.forEach(choice => {
+            currentChoices.push({ name: choice });
+        });
+
+        qs.yesNoQ[0].choices = currentChoices;
+
+        const answer = await inquirer.prompt(qs.yesNoQ);
+        console.clear();
+        await sleep(1000);
+        
+        const line = fn.pickRandom(story.yesNoSelect);
+        await speak([line + `${chalk.red(answer.yesNo)}`]);
+        console.clear();
+
+        // answer.letter is a one-element array, so string interpolation works,
+        // but we need to return the first element here.
+        return answer.yesNo[0];
     }
 };

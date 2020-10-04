@@ -17,7 +17,7 @@ s.letterMessages = [
 ];
 
 s.numberMessages = [
-    
+
 ];
 
 s.letterSelect = [
@@ -29,4 +29,8 @@ s.letterSelect = [
 s.numberSelect = [
     'As if by magic, the planchette slowly glides to the number...',
     'You feel a tug under your hand as the planchette moves with a will of its own, coming to rest on the number...',
+];
+
+s.yesNoSelect = [
+    'After what seems like a lifetime, the planchette drifts to...',
 ];

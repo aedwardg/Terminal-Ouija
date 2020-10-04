@@ -47,6 +47,7 @@ async function run() {
     }
 
     // YES/NO QUESTION HERE
+    player.choices = await ask.chooseYesNo();
 
     for (let i=0; i < 2; i++) {
         player.choices = await ask.chooseLetter();

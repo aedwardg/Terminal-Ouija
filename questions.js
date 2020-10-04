@@ -108,7 +108,7 @@ q.numberQ = [
         // IDEA: maybe assign this to different messages at runtime
         message: 'Out of nowhere, the planchette jerks down toward the row of numbers. Where does it go?',
         choices: [],
-        pageSize: 4,
+        pageSize: 3,
         validate: function (answer) {
             if (answer.length < 1) {
                 let message = `
@@ -120,6 +120,34 @@ q.numberQ = [
                 let message = `
                 The spirits will never give you more than one number or letter at a time.
                 Give in and let them guide you to a single number.
+                `;
+                return message;
+            } else {
+                return true;
+            }
+        }
+    }
+];
+
+q.yesNoQ = [
+    {
+        type: 'checkbox',
+        name: 'yesNo',
+        // IDEA: maybe assign this to different messages at runtime
+        message: 'The planchette hovers briefly between YES and NO. Where does it go?',
+        choices: [],
+        pageSize: 2,
+        validate: function (answer) {
+            if (answer.length < 1) {
+                let message = `
+                Until the spirits tell you "GOOD BYE", they will always give you an answer.
+                Concentrate harder.  Which word are you guided to?
+                `;
+                return message;
+            } else if (answer.length > 1) {
+                let message = `
+                The spirits will never give you more than one answer at a time.
+                Give in and let them guide you to a single word.
                 `;
                 return message;
             } else {
