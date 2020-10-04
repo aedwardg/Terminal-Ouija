@@ -36,20 +36,25 @@ async function run() {
 
     // while not all letters in name have been picked:
     for (let i=0; i < 2; i++) {
+        await animations.printGameBoard();
         player.choices = await ask.chooseLetter();
     }
 
     // CHOOSE NUMBER HERE
+    await animations.printGameBoard();
     player.choices = await ask.chooseNumber();
 
     for (let i=0; i < 2; i++) {
+        await animations.printGameBoard();
         player.choices = await ask.chooseLetter();
     }
 
     // YES/NO QUESTION HERE
+    await animations.printGameBoard();
     player.choices = await ask.chooseYesNo();
 
     for (let i=0; i < 2; i++) {
+        await animations.printGameBoard();
         player.choices = await ask.chooseLetter();
     }
 
