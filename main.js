@@ -43,27 +43,26 @@ async function run() {
     // CHOOSE NUMBER HERE
     await animations.printGameBoard();
     player.choices = await ask.chooseNumber();
-
+    
     for (let i=0; i < 2; i++) {
         await animations.printGameBoard();
         player.choices = await ask.chooseLetter();
     }
-
+        
     // YES/NO QUESTION HERE
     await animations.printGameBoard();
     player.choices = await ask.chooseYesNo();
-
+    
     for (let i=0; i < 2; i++) {
         await animations.printGameBoard();
         player.choices = await ask.chooseLetter();
     }
-
+        
     // KILL VILLAIN HERE?
     // RESET gameBoard.lettersUsed
     // end while loop
-
-    console.log(player.choices);
-    console.log(gameBoard.lettersUsed);
+        
+    animations.showFinalChoices();
 
     // Death Animation
     //await animations.startGlitch(`${chalk.red('You are dead')}`);

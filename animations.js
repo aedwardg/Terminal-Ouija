@@ -7,6 +7,7 @@ const chalkAnimation = require('chalk-animation');
 // External Files
 const art = require('./art');
 const { pickRandom } = require('./functions');
+const { player, gameBoard } = require('./player');
 
 function sleep(ms) {
     return new Promise((resolve) => {
@@ -49,6 +50,7 @@ async function flashlight(message, ms, speed = 1)  {
 }
 
 async function printGameBoard() {
+    // TODO: MOVE THESE TO GAMEBOARD OBJECT
     const board1 =`
         YES            NO    
     A B C D E F G H I J K L M
@@ -81,6 +83,20 @@ async function printGameBoard() {
     console.log(board1);
 }
 
+async function showFinalChoices() {
+    const name = player.name.toUpperCase();
+    let choices = player.choices;
+
+    for (let i = 0; i < choices.length; i++) {
+        if (name.includes(choices[i])) {
+            choices[i] = `${chalk.red(choices[i])}`;
+        }
+    }
+
+    choices = choices.toString().replace(/,/g, ' ');
+    await speak([choices]);
+}
+
 async function finalImage(killer) {
     console.clear();
     console.log(chalk.red(killer));
@@ -93,5 +109,6 @@ module.exports = {
     startGlitch: startGlitch,
     flashlight: flashlight,
     printGameBoard: printGameBoard,
+    showFinalChoices: showFinalChoices,
     finalImage: finalImage,
 }
