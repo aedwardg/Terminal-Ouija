@@ -67,8 +67,15 @@ q.villainsQ = [
                 Take a closer look...who else is sitting at the table?
                 `;
                 return message;
+            } else if (answer.length === 1) {
+                let message = `
+                You must be mistaken - there are people on either side of you.
+                Take a closer look...who else is sitting at the table?
+                `;
+                return message;
+            } else {
+                return true;
             }
-            return true;
         }
     }
 ];

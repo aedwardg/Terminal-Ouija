@@ -12,6 +12,10 @@ s.intro = [
     `...a ${chalk.red('killer')} deal?\n`
 ];
 
+// INFO ABOUT OUIJA BOARD
+
+// STORY FOR VILLAIN DYING
+
 s.letterMessages = [
     
 ];
@@ -34,3 +38,5 @@ s.numberSelect = [
 s.yesNoSelect = [
     'After what seems like a lifetime, the planchette drifts to...',
 ];
+
+// ENDING TO TIE INTO DEATH NOTE AND FINAL IMAGE

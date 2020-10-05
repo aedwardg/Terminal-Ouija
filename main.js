@@ -70,11 +70,12 @@ async function run() {
             player.choices = await ask.chooseLetter();
         }
             
-        // KILL VILLAIN HERE?
-        // Add to notes that villain died.
-        // RESET gameBoard.lettersUsed
+        // Kill villain and add to notes
+        if (player.villainNames.length >= 2){
+            player.notes = animations.killVillain();
+        }
+        
         gameBoard.lettersUsed = [];
-        // end while loop
     }
 
         
@@ -91,17 +92,3 @@ async function run() {
 };
   
 run();
-
-// Example of using Rx.Subject() and adding new
-// questions to prompt:
-
-//     let prompts = new Subject();
-//     inquirer.prompt(prompts)
-//     .then(answer => {
-//         if (answer.play.lower === 'y') {
-//             console.log('Very well. Good luck.')
-//         }
-//     });
-//     prompts.next(
-//         qs.playQ[0]
-//     );

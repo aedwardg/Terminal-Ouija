@@ -68,6 +68,20 @@ async function printGameBoard() {
     console.log(board1);
 }
 
+async function killVillain() {
+    let villain = pickRandom(player.villainNames);
+
+    while (villain === player.killer) {
+        villain = pickRandom(player.villainNames);
+    }
+
+    const index = player.villainNames.indexOf(villain);
+    const entry = player.villainNames.splice(index, 1)
+    player.notes = `${entry} was ${chalk.red('MURDERED!')}`;
+
+    // STORY SECTION HERE
+}
+
 async function showFinalChoices() {
     const name = player.name.toUpperCase();
     let choices = player.choices;
@@ -96,12 +110,14 @@ async function showFinalChoices() {
     await sleep(1000);
 }
 
+// does this need to be async?
 async function printDeathNote() {
     console.log('\n');
     console.log(chalk.red(player.notes));
     console.log('\n');
 }
 
+// does this need to be async?
 async function finalImage(killer) {
     console.clear();
     console.log(chalk.red(killer));
@@ -114,6 +130,7 @@ module.exports = {
     startGlitch: startGlitch,
     flashlight: flashlight,
     printGameBoard: printGameBoard,
+    killVillain:killVillain,
     showFinalChoices: showFinalChoices,
     printDeathNote: printDeathNote,
     finalImage: finalImage,
