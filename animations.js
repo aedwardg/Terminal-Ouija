@@ -84,17 +84,28 @@ async function killVillain() {
 
 async function showFinalChoices() {
     const name = player.name.toUpperCase();
-    let choices = player.choices;
+    const choices = player.choices;
+    const notName = [];
 
     for (let i = 0; i < choices.length; i++) {
         if (name.includes(choices[i])) {
             choices[i] = `${chalk.red(choices[i])}`;
+        } else {
+            notName.push(i);
         }
     }
 
-    choices = choices.toString().replace(/,/g, ' ');
-    await speak([choices]);
+    let choiceString = choices.toString().replace(/,/g, ' ');
+    await speak([choiceString]);
     await speak(['And then it finally clicks...']);
+
+    for (const i of notName) {
+        choices[i] = `${chalk.black(choices[i])}`;
+    }
+
+    choiceString = choices.toString().replace(/,/g, ' ');
+    await speak([choiceString]);
+    await sleep(1000);
     console.log(chalk.red(name));
     await sleep(1000);
     await speak([`...and the last thing you see is ${chalk.red('RED')}.`]);

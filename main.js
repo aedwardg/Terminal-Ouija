@@ -72,7 +72,7 @@ async function run() {
             
         // Kill villain and add to notes
         if (player.villainNames.length >= 2){
-            player.notes = animations.killVillain();
+            animations.killVillain();
         }
         
         gameBoard.lettersUsed = [];
