@@ -3,8 +3,8 @@
 // External Packages
 const inquirer = require('inquirer');
 
+// Questions to ask user, formatted for Inquirer.js
 const q = module.exports;
-
 q.playQ = [
     {
         type: 'confirm',

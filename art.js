@@ -1,5 +1,9 @@
 'use strict';
 
+// Spooky artwork created using free tools by the folks at
+// spikerog: https://www.ascii-art-generator.org/ and
+// @patorjk: https://patorjk.com/software/taag/
+
 const intro = `
 
 ▄▄▄█████▓▓█████  ██▀███   ███▄ ▄███▓ ██▓ ███▄    █  ▄▄▄       ██▓        ▒█████   █    ██  ██▓ ▄▄▄██▀▀▀▄▄▄      

@@ -9,6 +9,8 @@ const art = require('./art');
 const { pickRandom } = require('./functions');
 const { player, gameBoard } = require('./player');
 
+// Assorted functions to provide awesome animations
+
 function sleep(ms) {
     return new Promise((resolve) => {
         setTimeout(resolve, ms);

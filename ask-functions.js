@@ -11,6 +11,7 @@ const story = require('./story.js');
 const { sleep, speak } = require('./animations');
 const { player, gameBoard } = require('./player');
 
+// Functions to ask user the questions in `questions.js`
 module.exports = {
     async play() {
         const answer = await inquirer.prompt(qs.playQ);

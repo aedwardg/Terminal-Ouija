@@ -1,5 +1,6 @@
 'use strict';
 
+// General functions not related to animations or questions
 module.exports = {
     pickRandom(choiceArray) {
         const index = Math.floor(Math.random() * choiceArray.length);

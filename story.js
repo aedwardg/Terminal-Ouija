@@ -3,8 +3,8 @@
 // External packages
 const chalk = require('chalk');
 
+// Arrays containing story elements to be dynamically added in
 const s = module.exports;
-
 s.intro = [
     `Welcome to my shop, ${chalk.bold.red('Terminal Gifts and Antiquities')}.\n`,  
     'You must be in the market for something dreadfully special.\n',

@@ -11,6 +11,7 @@ const { speak } = require('./animations');
 const story = require('./story.js');
 const { player, gameBoard } = require('./player');
 
+// Main function to run game
 async function run() {
     // Opening Animation
     await animations.startIntro();

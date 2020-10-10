@@ -3,7 +3,7 @@
 // External files
 const art = require('./art');
 
-// Base player object
+// Base player and gameBoard objects
 const player = {
     name: null,
     willPlay: null,
