@@ -3,7 +3,6 @@
 // External packages
 const inquirer = require('inquirer');
 const chalk = require('chalk');
-const chalkAnimation = require('chalk-animation');
 
 // External Files
 const qs = require('./questions');
@@ -11,7 +10,6 @@ const fn = require('./functions');
 const story = require('./story.js');
 const { sleep, speak } = require('./animations');
 const { player, gameBoard } = require('./player');
-const { pickRandomChar } = require('./functions');
 
 module.exports = {
     async play() {

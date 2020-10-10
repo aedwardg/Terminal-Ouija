@@ -80,6 +80,11 @@ async function killVillain() {
     player.notes = `${entry} was ${chalk.red('MURDERED!')}`;
 
     // STORY SECTION HERE
+    if (player.villainNames.length === 1) {
+        // Storyline where player knows who killer is.
+    } else {
+        // Storyline where there is still doubt about who killer is
+    }
 }
 
 async function showFinalChoices() {
@@ -121,8 +126,8 @@ async function showFinalChoices() {
     await sleep(1000);
 }
 
-// does this need to be async?
 async function printDeathNote() {
+    // speak transition line
     console.log('\n');
     console.log(chalk.red(player.notes));
     console.log('\n');

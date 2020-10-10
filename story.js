@@ -14,8 +14,11 @@ s.intro = [
 
 // INFO ABOUT OUIJA BOARD
 
+// FILLER SENTENCES FOR MIDDLE OF STORY
+
 // STORY FOR VILLAIN DYING
 
+// TODO: Messages prompting user to select letter/number
 s.letterMessages = [
     
 ];
@@ -24,6 +27,7 @@ s.numberMessages = [
 
 ];
 
+// Narratives for after user makes selections
 s.letterSelect = [
     'As if by magic, the planchette slowly glides to the letter...',
     'You feel a tug under your hand as the planchette moves with a will of its own, coming to rest on the letter...',

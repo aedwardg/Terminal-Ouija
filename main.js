@@ -2,16 +2,12 @@
 
 // External packages
 const chalk = require('chalk');
-const inquirer = require('inquirer');
-const chalkAnimation = require('chalk-animation');
 const { Subject } = require('rxjs');
 
 // External files
 const ask = require('./ask-functions');
 const animations = require('./animations');
 const { speak } = require('./animations');
-const qs = require('./questions');
-const art = require('./art');
 const story = require('./story.js');
 const { player, gameBoard } = require('./player');
 
@@ -78,7 +74,7 @@ async function run() {
         gameBoard.lettersUsed = [];
     }
 
-        
+    // Final choices spell user's name       
     await animations.showFinalChoices();
     
     // Death Animation
