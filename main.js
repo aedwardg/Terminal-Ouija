@@ -2,7 +2,6 @@
 
 // External packages
 const chalk = require('chalk');
-const { Subject } = require('rxjs');
 
 // External files
 const ask = require('./ask-functions');
@@ -15,7 +14,6 @@ const { player, gameBoard } = require('./player');
 async function run() {
     // Opening Animation
     await animations.startIntro();
-      
     await speak(story.intro);
 
     // Ask User if they want to play
@@ -81,11 +79,13 @@ async function run() {
     // Death Animation
     await animations.startGlitch(`${chalk.red('You are dead')}`);
 
+    await speak(story.ending);
+
     animations.printDeathNote();
 
 
     // Reveal the killer;
-    //await animations.finalImage(player.killerArt);
+    await animations.finalImage(player.killerArt);
 };
   
 run();

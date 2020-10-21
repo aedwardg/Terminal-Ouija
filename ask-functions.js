@@ -17,7 +17,7 @@ module.exports = {
         const answer = await inquirer.prompt(qs.playQ);
         
         if (answer.play) {
-            console.log('Very well. Good luck.');
+            console.log('Very well. Follow me.');
             await sleep(2000);
             console.clear();
         } else {

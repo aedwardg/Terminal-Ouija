@@ -128,6 +128,7 @@ async function showFinalChoices() {
     await sleep(1000);
 }
 
+// does this need to be async?
 async function printDeathNote() {
     // speak transition line
     console.log('\n');
@@ -135,8 +136,9 @@ async function printDeathNote() {
     console.log('\n');
 }
 
-// does this need to be async?
 async function finalImage(killer) {
+    await speak([`${chalk.hex('#9e8c5c')('...And beside the mysterious note, an image etched into the stone floor in the same red "ink": ')}\n`,]);
+    await sleep(1000);
     console.clear();
     console.log(chalk.red(killer));
 }
