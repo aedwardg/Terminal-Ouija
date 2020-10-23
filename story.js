@@ -6,42 +6,42 @@ const chalk = require('chalk');
 // Arrays containing story elements to be dynamically added in
 const s = module.exports;
 s.intro = [
-    `Welcome to my shop, ${chalk.bold.red('Terminal Gifts and Antiquities')}.\n`,  
-    'You must be in the market for something dreadfully special.\n',
-    'Perhaps...\n',
-    `...a ${chalk.red('killer')} deal?\n`
+    `Welcome to my shop, ${chalk.bold.red('Terminal Gifts and Antiquities')}.`,  
+    'You must be in the market for something dreadfully special.',
+    'Perhaps...',
+    `...a ${chalk.red('killer')} deal?`
 ];
 
 // Intro and info about Ouija Board
 s.begin = [
-    'As you can see, I have all manner of treasures here — treasures from every era:\n',
-    'A brazen bull from Ancient Greece, Egyptian amulets...even a sacrificial knife from the early Maya.\n',
-    'The most peculiar and extraordinary of my wares, however, is quite...modern...by comparison.\n',
-    `Perhaps you have heard of a ${chalk.red('Ouija board')} before?\n`,
-    'Yes, yes, of course you have.\n',
-    'Though, I doubt you know the true history of it....\n',
+    'As you can see, I have all manner of treasures here — treasures from every era:',
+    'A brazen bull from Ancient Greece, Egyptian amulets...even a sacrificial knife from the early Maya.',
+    'The most peculiar and extraordinary of my wares, however, is quite...modern...by comparison.',
+    `Perhaps you have heard of a ${chalk.red('Ouija board')} before?`,
+    'Yes, yes, of course you have.',
+    'Though, I doubt you know the true history of it....',
 ];
 
 s.ouija = [
-    'You have probably heard that the first Ouija board named itself.\n',
-    'According to legend, in 1890 a Medium asked the first board what they should call it...\n',
-    `...and the board spelled out a single word: ${chalk.red('OUIJA')}.\n`,
-    `When asked what that meant, the board responded simply with...${chalk.red('GOOD LUCK')}.\n\n`,
-    'Now, I love a good legend as much as the next man, but I must warn you:\n',
-    'there is far more to the story than that.\n',
-    'Ouija boards were used by the spiritually inclined long before that incident.\n',
-    'In fact, I own one of the oldest surviving "talking boards"...\n', 
-    'and it appears to be at least 200 years older than that account.\n\n',
-    'As you will see, even though it looks like its modern counterparts...\n', 
-    'there is something dreadfully unique about this piece.\n',
-    "It won't spell out any answers for you.\n",
-    'Instead, it will direct you to a seemingly random set of answers...\n', 
-    'and you must determine the meaning.\n',
-    'So, pay attention! What is that saying everyone uses these days?\n',
-    `Ah yes, ${chalk.red("The devil is in the details.")}\n\n`,
-    'Well, here we are! Have a seat in that empty chair.\n',  
-    "I hope you don't mind that I invited some company.\n",
-    "After all, you can't use a Ouija board alone, can you?\n"
+    'You have probably heard that the first Ouija board named itself.',
+    'According to legend, in 1890 a Medium asked the first board what they should call it...',
+    `...and the board spelled out a single word: ${chalk.red('OUIJA')}.`,
+    `When asked what that meant, the board responded simply with...${chalk.red('GOOD LUCK')}.\n`,
+    'Now, I love a good legend as much as the next man, but I must warn you:',
+    'there is far more to the story than that.',
+    'Ouija boards were used by the spiritually inclined long before that incident.',
+    'In fact, I own one of the oldest surviving "talking boards"...', 
+    'and it appears to be at least 200 years older than that account.\n',
+    'As you will see, even though it looks like its modern counterparts...', 
+    'there is something dreadfully unique about this piece.',
+    "It won't spell out any answers for you.",
+    'Instead, it will direct you to a seemingly random set of answers...', 
+    'and you must determine the meaning.',
+    'So, pay attention! What is that saying everyone uses these days?',
+    `Ah yes, ${chalk.red("The devil is in the details.")}\n`,
+    'Well, here we are! Have a seat in that empty chair.',  
+    "I hope you don't mind that I invited some company.",
+    "After all, you can't use a Ouija board alone, can you?"
 ];
 
 s.room = [

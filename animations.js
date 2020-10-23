@@ -17,12 +17,14 @@ function sleep(ms) {
     });
   }
 
-async function speak(script) {
+async function speak(script, newline = true) {
     for (const line of script) {
         for (const letter of line) {
             process.stdout.write(letter);
             await sleep(50);
         }
+
+        if (newline) { console.log(''); }
         await sleep(2000);
     };
     // add an extra newline after "speaking"
@@ -34,7 +36,7 @@ async function speak(script) {
 async function narrate(script) {
     const new_script = [];
     for (const line of script) {
-        new_script.push(`${chalk.hex('#9e8c5c')(line)}\n`);
+        new_script.push(`${chalk.hex('#9e8c5c')(line)}`);
     }
 
     await speak(new_script);
@@ -148,7 +150,7 @@ async function printDeathNote() {
 }
 
 async function finalImage(killer) {
-    await speak([`${chalk.hex('#9e8c5c')('...And beside the mysterious note, an image etched into the stone floor in the same red "ink": ')}\n`,]);
+    await speak([`${chalk.hex('#9e8c5c')('...And beside the mysterious note, an image etched into the stone floor in the same red "ink": ')}`,]);
     await sleep(1000);
     console.clear();
     console.log(chalk.red(killer));
