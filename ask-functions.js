@@ -17,11 +17,11 @@ module.exports = {
         const answer = await inquirer.prompt(qs.playQ);
         
         if (answer.play) {
-            console.log('Very well. Follow me.');
+            await speak(['Very well. Follow me.']);
             await sleep(2000);
             console.clear();
         } else {
-            console.log('Wise Choice.');
+            await speak(['Wise Choice.']);
         }
 
         return answer.play;
@@ -29,7 +29,7 @@ module.exports = {
     async playerName() {
         const answer = await inquirer.prompt(qs.nameQ);
         console.clear();
-        console.log(`Welcome, ${answer.name}`);
+        await speak([`Welcome, ${answer.name}.`]);
         return answer.name;
     },
     async villainNames() {
@@ -57,7 +57,9 @@ module.exports = {
         const chosen = [];
         const name = player.name;
         const charList = gameBoard.letters;
+        const message = fn.pickRandom(story.letterMessages);
 
+        // Select one letter from name
         let nameLetter = fn.pickRandomChar(name);
 
         while (chosen.includes(nameLetter)) {
@@ -66,6 +68,7 @@ module.exports = {
 
         chosen.push(nameLetter.toUpperCase());
 
+        // Select 3 letters from gameboard
         let letter = fn.pickRandomChar(charList);
 
         for (let i = 0; i < 3; i++) {
@@ -84,7 +87,9 @@ module.exports = {
             currentChoices.push({ name: choice });
         });
 
+        // Send choices and randomly selected message to Inquirer question
         qs.letterQ[0].choices = currentChoices;
+        qs.letterQ[0].message = message;
 
         const answer = await inquirer.prompt(qs.letterQ);
         console.clear();
@@ -102,7 +107,9 @@ module.exports = {
     async chooseNumber() {
         const chosen = [];
         const numList = gameBoard.numbers;
+        const message = fn.pickRandom(story.numberMessages);
 
+        // Select 3 numbers
         let num = fn.pickRandomChar(numList);
 
         for (let i = 0; i < 3; i++) {
@@ -120,7 +127,9 @@ module.exports = {
             currentChoices.push({ name: choice });
         });
 
+        // Send choices and randomly selected message to Inquirer question
         qs.numberQ[0].choices = currentChoices;
+        qs.numberQ[0].message = message;
 
         const answer = await inquirer.prompt(qs.numberQ);
         console.clear();

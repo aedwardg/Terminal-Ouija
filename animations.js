@@ -29,6 +29,17 @@ async function speak(script) {
     console.log('');
 }
 
+// Same as `speak()`, but with light brown:
+// hex: #9e8c5c, rgb: (158, 140, 92)
+async function narrate(script) {
+    const new_script = [];
+    for (const line of script) {
+        new_script.push(`${chalk.hex('#9e8c5c')(line)}\n`);
+    }
+
+    await speak(new_script);
+}
+
 async function startIntro() {
     console.clear();
     const introAnimation = chalkAnimation.pulse(art.intro);
@@ -128,7 +139,7 @@ async function showFinalChoices() {
     await sleep(1000);
 }
 
-// does this need to be async?
+// does this need to be asynchronous?
 async function printDeathNote() {
     // speak transition line
     console.log('\n');
@@ -146,6 +157,7 @@ async function finalImage(killer) {
 module.exports = {
     sleep: sleep,
     speak: speak,
+    narrate: narrate,
     startIntro: startIntro,
     startGlitch: startGlitch,
     flashlight: flashlight,

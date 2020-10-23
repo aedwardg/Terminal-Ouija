@@ -6,7 +6,7 @@ const chalk = require('chalk');
 // External files
 const ask = require('./ask-functions');
 const animations = require('./animations');
-const { speak } = require('./animations');
+const { speak, narrate, sleep } = require('./animations');
 const story = require('./story.js');
 const { player, gameBoard } = require('./player');
 
@@ -22,6 +22,15 @@ async function run() {
 
     // Ask for and save player name
     player.name = await ask.playerName();
+
+    // Set the stage
+    await speak(story.begin);
+    await sleep(1000);
+    console.clear();
+    await speak(story.ouija);
+    await sleep(2000);
+    console.clear();
+    await narrate(story.room);
 
     // Ask player who else is playing
     player.villainNames = await ask.villainNames();
@@ -79,7 +88,7 @@ async function run() {
     // Death Animation
     await animations.startGlitch(`${chalk.red('You are dead')}`);
 
-    await speak(story.ending);
+    await narrate(story.ending);
 
     animations.printDeathNote();
 

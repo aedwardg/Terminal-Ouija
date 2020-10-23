@@ -84,7 +84,6 @@ q.letterQ = [
     {
         type: 'checkbox',
         name: 'letter',
-        // IDEA: maybe assign this to different messages at runtime
         message: 'You feel the planchette begin to move beneath your hand. Where does it go?',
         choices: [],
         pageSize: 4,
@@ -112,7 +111,6 @@ q.numberQ = [
     {
         type: 'checkbox',
         name: 'number',
-        // IDEA: maybe assign this to different messages at runtime
         message: 'Out of nowhere, the planchette jerks down toward the row of numbers. Where does it go?',
         choices: [],
         pageSize: 3,
