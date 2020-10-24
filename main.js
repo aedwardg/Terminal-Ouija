@@ -24,13 +24,7 @@ async function run() {
     player.name = await ask.playerName();
 
     // Set the stage
-    await speak(story.begin);
-    await sleep(1000);
-    console.clear();
-    await speak(story.ouija);
-    await sleep(2000);
-    console.clear();
-    await narrate(story.room);
+    await animations.setStage();
 
     // Ask player who else is playing
     player.villainNames = await ask.villainNames();

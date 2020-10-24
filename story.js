@@ -27,7 +27,7 @@ s.ouija = [
     'According to legend, in 1890 a Medium asked the first board what they should call it...',
     `...and the board spelled out a single word: ${chalk.red('OUIJA')}.`,
     `When asked what that meant, the board responded simply with...${chalk.red('GOOD LUCK')}.\n`,
-    'Now, I love a good legend as much as the next man, but I must warn you:',
+    'Now, I love a good legend as much as the next historian, but I must warn you:',
     'there is far more to the story than that.',
     'Ouija boards were used by the spiritually inclined long before that incident.',
     'In fact, I own one of the oldest surviving "talking boards"...', 
@@ -45,8 +45,22 @@ s.ouija = [
 ];
 
 s.room = [
-
+    'Stepping into the dimly lit room, you see an old wooden table — bare, aside from a single rectangular item at its center.',
+    'At first glance, the item looks to be a typical Ouija board:', 
+    'letters, numbers, a couple of words, and a triangular planchette with a hole in the middle.',
+    'There is something strange about the board, however.',
+    'It almost seems to shy away the light, preferring to remain in a shroud of darkness.',
+    "Yet, from time to time, as though momentarily coming to life, the board's characters begin to glow...",
+    'a faint pulsing from within, so minute you question whether you see it at all.',
 ];
+
+s.villains = [
+    'As your eyes adjust to the sudden gloom, you notice you are not alone.',
+    'Lurking just out of sight stand shadowy figures to either side of your empty chair.',
+    'You realize they must be the "company" the proprietor had mentioned and ease into your seat.\n',
+    'Finally settled, you look about and feel your breath catch in your throat...', 
+    'as one by one the other occupants seat themselves around the table.',
+]
 
 // FILLER SENTENCES FOR MIDDLE OF STORY
 
@@ -64,6 +78,7 @@ s.numberMessages = [
     'Drifting away from the letters, the planchette appears to slide toward a number. Where does it go?'
 ];
 
+// TODO: add more letterSelect messages
 // Narratives for after user makes selections
 s.letterSelect = [
     'As if by magic, the planchette slowly glides to the letter...',

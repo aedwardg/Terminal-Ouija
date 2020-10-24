@@ -6,6 +6,7 @@ const chalkAnimation = require('chalk-animation');
 
 // External Files
 const art = require('./art');
+const story = require('./story.js');
 const { pickRandom } = require('./functions');
 const { player, gameBoard } = require('./player');
 
@@ -81,6 +82,22 @@ async function printGameBoard() {
 
     console.clear();
     console.log(board1);
+}
+
+async function setStage() {
+    await speak(story.begin);
+    await sleep(1000);
+    console.clear();
+
+    await speak(story.ouija);
+    await sleep(2000);
+    console.clear();
+
+    await narrate(story.room);
+    await printGameBoard();
+    console.clear();
+
+    await narrate(story.villains);
 }
 
 async function killVillain() {
@@ -164,6 +181,7 @@ module.exports = {
     startGlitch: startGlitch,
     flashlight: flashlight,
     printGameBoard: printGameBoard,
+    setStage: setStage,
     killVillain:killVillain,
     showFinalChoices: showFinalChoices,
     printDeathNote: printDeathNote,
