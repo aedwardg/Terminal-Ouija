@@ -16,46 +16,44 @@ async function run() {
     await animations.startIntro();
     await speak(story.intro);
 
-    // Ask User if they want to play
+    // Ask User to play and for their name
     player.willPlay = await ask.play();
     if (!player.willPlay) { return 0; }
 
-    // Ask for and save player name
     player.name = await ask.playerName();
 
     // Set the stage
     await animations.setStage();
 
-    // Ask player who else is playing
+    // Ask player who else is playing and set random killer
     player.villainNames = await ask.villainNames();
-    
-    // set random killer
     player.killer = player.selectKiller(player.villainNames);
 
-    // while not all letters in name have been picked:
-    const splitName = player.name.toUpperCase().split('');
+    // Touch the board
+    await animations.touchBoard();
 
+    const splitName = player.name.toUpperCase().split('');
+    
+    // while not all letters in name have been picked:
     while (!splitName.every(e => player.choices.includes(e))) {
-        // Choose 2 letters
+        // Choose 2 letters and a number
         for (let i=0; i < 2; i++) {
             await animations.printGameBoard();
             player.choices = await ask.chooseLetter();
         }
     
-        // Choose number
         await animations.printGameBoard();
         player.choices = await ask.chooseNumber();
 
         // Check and break
         if (splitName.every(e => player.choices.includes(e))) break;
         
-        // Choose 2 more letters
+        // Choose 2 more letters and yes/no question
         for (let i=0; i < 2; i++) {
             await animations.printGameBoard();
             player.choices = await ask.chooseLetter();
         }
             
-        // Yes/No question
         await animations.printGameBoard();
         player.choices = await ask.chooseYesNo();
 
@@ -70,24 +68,19 @@ async function run() {
             
         // Kill villain and add to notes
         if (player.villainNames.length >= 2){
-            animations.killVillain();
+            await animations.killVillain();
         }
         
         gameBoard.lettersUsed = [];
     }
 
-    // Final choices spell user's name       
+    // Final animations       
     await animations.showFinalChoices();
-    
-    // Death Animation
     await animations.startGlitch(`${chalk.red('You are dead')}`);
-
     await narrate(story.ending);
-
     animations.printDeathNote();
 
-
-    // Reveal the killer;
+    // Reveal the killer's image;
     await animations.finalImage(player.killerArt);
 };
   

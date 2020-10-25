@@ -100,6 +100,14 @@ async function setStage() {
     await narrate(story.villains);
 }
 
+async function touchBoard() {
+    await speak(story.goodLuck);
+    console.clear();
+    await narrate(story.touchBoard);
+    console.clear();
+    await sleep(3000);
+}
+
 async function killVillain() {
     let villain = pickRandom(player.villainNames);
 
@@ -111,11 +119,21 @@ async function killVillain() {
     const entry = player.villainNames.splice(index, 1)
     player.notes = `${entry} was ${chalk.red('MURDERED!')}`;
 
-    // STORY SECTION HERE
     if (player.villainNames.length === 1) {
         // Storyline where player knows who killer is.
+        const message = story.knownKiller[0];
+        const killer = player.killer;
+        const firstname = player.killer.split(' ')[0];
+        
+        await speak([message(villain, `${chalk.red(killer)}`, firstname)]);
+        await sleep(2000);
+        console.clear();
     } else {
         // Storyline where there is still doubt about who killer is
+        const message = pickRandom(story.villainDeath);
+        await speak([message(villain, `${chalk.red('blood')}`)]);
+        await sleep(2000);
+        console.clear();
     }
 }
 
@@ -182,6 +200,7 @@ module.exports = {
     flashlight: flashlight,
     printGameBoard: printGameBoard,
     setStage: setStage,
+    touchBoard: touchBoard,
     killVillain:killVillain,
     showFinalChoices: showFinalChoices,
     printDeathNote: printDeathNote,

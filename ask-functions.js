@@ -41,10 +41,10 @@ module.exports = {
         for (const villain of answers.villains) {
             if (leftSeats.includes(villain)) {
                 let message = `${villain} is on your ${chalk.red('LEFT')}.`;
-                await speak([message]);
+                await speak([message], false);
             } else {
                 let message = `${villain} is on your ${chalk.red('RIGHT')}.`
-                await speak([message]);
+                await speak([message], false);
             }
         }
 

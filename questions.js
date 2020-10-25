@@ -59,7 +59,6 @@ q.villainsQ = [
             }
         ],
         pageSize: 8,
-        // loop: false,
         validate: function (answer) {
             if (answer.length < 1) {
                 let message = `

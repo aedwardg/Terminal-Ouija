@@ -3,6 +3,9 @@
 // External packages
 const chalk = require('chalk');
 
+// External files
+const { format } = require('./functions.js');
+
 // Arrays containing story elements to be dynamically added in
 const s = module.exports;
 s.intro = [
@@ -60,11 +63,58 @@ s.villains = [
     'You realize they must be the "company" the proprietor had mentioned and ease into your seat.\n',
     'Finally settled, you look about and feel your breath catch in your throat...', 
     'as one by one the other occupants seat themselves around the table.',
-]
+];
+
+s.goodLuck = [
+    'Ah yes, I see you have met my other guests. Wonderful!',
+    'I shall leave you now. The spirits are not too fond of spectators.',
+    'Remember, everyone at the table must touch the planchette to activate the board.',
+    'Now, good bye and good luck!'
+];
+
+s.touchBoard = [
+    'Doing your best to avoid the gaze of anyone at the table, you reach your hand forward.',
+    'The planchette, smooth and cold to the touch, shivers slightly beneath your fingertips.',
+    'One by one, your gruesome companions follow suit until each makes a connection with the piece.',
+    'For a split second, nothing appears to happen...',
+    'until everything...',
+    'goes...',
+    'black.'
+];
 
 // FILLER SENTENCES FOR MIDDLE OF STORY
+s.fillerMaterial = [
 
-// STORY FOR VILLAIN DYING
+];
+
+// Stories for villain dying
+s.villainDeath = [
+    format`
+    A scream pierces the air, followed the shuffling of boots and the sound of something heavy being dragged through the room.
+    When you look, ${0} is missing, replaced by a ${1}-dark smear accross the wooden floor.`,
+    format`
+    A loud CRAACKK rips through the silence, followed by a THUD as ${0}'s ${1}y head rolls across the table.
+    Yet, even as you heave in terror, you feel an overwhelming compulsion to see the séance through.
+    And the board comes to life once more.`,
+    format`
+    ${0}'s hand suddenly slumps away from the table.
+    For an instant, the light flickers on and you see them lying on the floor in a pool of their own ${1}.`,
+];
+
+s.knownKiller = [
+    format`
+    Your spine stiffens as you feel a warmth seeping down the side of your arm.
+    You know what this means even before the lightbulb flickers back on and you see 
+    ${0} slumped over the table.
+
+    ${1} is the killer.
+
+    You want to scream, but fear grips your throat like a vice.
+
+    Instead, your eyes meet ${0}'s menacing glare 
+    and your hand remains glued to the planchette as it continues to sweep across the board.
+    `
+];
 
 // Messages prompting user to select letter/number
 s.letterMessages = [
