@@ -33,7 +33,7 @@ async function speak(script, newline = true) {
 }
 
 // Same as `speak()`, but with light brown:
-// hex: #9e8c5c, rgb: (158, 140, 92)
+// hex: #9e8c5c, RGB: (158, 140, 92)
 async function narrate(script) {
     const new_script = [];
     for (const line of script) {
@@ -106,6 +106,13 @@ async function touchBoard() {
     await narrate(story.touchBoard);
     console.clear();
     await sleep(3000);
+}
+
+async function fillStory(list) {
+    const line = pickRandom(list);
+    await narrate([line]);
+    await sleep(2000);
+    console.clear();
 }
 
 async function killVillain() {
@@ -184,11 +191,38 @@ async function printDeathNote() {
     console.log('\n');
 }
 
+async function survive() {
+    const fight = story.fight[0];
+    const firstname = player.killer.split(' ')[0];
+    const killer = `${chalk.red(firstname)}`;
+
+    await speak([fight(killer, killer)]);
+    await sleep(1000);
+    console.clear();
+    await sleep(2000);
+    await narrate(story.wakeUp);
+    await obituary(player.name, player.killer, player.killerArt);
+}
+
 async function finalImage(killer) {
     await speak([`${chalk.hex('#9e8c5c')('...And beside the mysterious note, an image etched into the stone floor in the same red "ink": ')}`,]);
     await sleep(1000);
     console.clear();
     console.log(chalk.red(killer));
+}
+
+async function obituary(name, killer, art) {
+    const obit = [
+        'Lying on the floor in front of your eyes is your own obituary.\n',
+        chalk.black`${chalk.bgWhite(name + ' — died 1970. Yet another victim of ' + killer)}`,
+        chalk.black`${chalk.bgWhite('If you have any information regarding this murder, please call authorities immediately.')}
+        `,
+        'And below the text, was an image.  An image you suddenly realize was the last thing you ever saw.'
+    ]
+    await narrate(obit);
+    await sleep(1000);
+    console.clear();
+    console.log(chalk.red(art));
 }
 
 module.exports = {
@@ -201,8 +235,11 @@ module.exports = {
     printGameBoard: printGameBoard,
     setStage: setStage,
     touchBoard: touchBoard,
+    fillStory: fillStory,
     killVillain:killVillain,
     showFinalChoices: showFinalChoices,
     printDeathNote: printDeathNote,
+    survive: survive,
     finalImage: finalImage,
+    obituary: obituary,
 }

@@ -48,6 +48,9 @@ async function run() {
         // Check and break
         if (splitName.every(e => player.choices.includes(e))) break;
         
+        // INSERT FILLER 1
+        await animations.fillStory(story.fillerMaterial);
+
         // Choose 2 more letters and yes/no question
         for (let i=0; i < 2; i++) {
             await animations.printGameBoard();
@@ -59,6 +62,9 @@ async function run() {
 
         // Check and break
         if (splitName.every(e => player.choices.includes(e))) break;
+
+        // Insert filler 2
+        await animations.fillStory(story.fillerMaterial2);
         
         // Choose two final letters
         for (let i=0; i < 2; i++) {
@@ -69,6 +75,9 @@ async function run() {
         // Kill villain and add to notes
         if (player.villainNames.length >= 2){
             await animations.killVillain();
+        } else {
+            await animations.survive();
+            return 0;
         }
         
         gameBoard.lettersUsed = [];
@@ -82,6 +91,7 @@ async function run() {
 
     // Reveal the killer's image;
     await animations.finalImage(player.killerArt);
+    return 1;
 };
   
 run();

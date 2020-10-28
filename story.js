@@ -84,7 +84,87 @@ s.touchBoard = [
 
 // FILLER SENTENCES FOR MIDDLE OF STORY
 s.fillerMaterial = [
+    `
+    Remembering what the proprietor said about paying attention, 
+    you pull a pen and paper out of your pocket and jot down the board's answers.`,
+    `
+    No matter how hard you think about it, you can't seem to figure out the board's message.
+    Angrily you try to yank your hand away from the planchette, 
+    but searing pain races up your arm and your hand remains one with the mysterious floating piece.`,
+    `
+    Already, you regret your choice to visit the shop. 
+    You try to remember why you came in the first place, 
+    but you seem to have no memory of anything that happened before that moment.`,
+    `
+    Feeling something brush against your leg, you jerk back in surprise. 
+    A light scuffling sound recedes into the corner, and you can't help but shiver.
+    Something about this place gives you the creeps...and the company certainly doesn't help.`,
+    `
+    Out of the corner of your eye, you see a momentary glint — like the flash of a blade in the light.
+    Shaking your head, you tell yourself you must be imagining things.
+    After all, the only light in the room is the rhythmic pulsing of the board's mysterious ivory-colored aura.`,
+    `
+    Unable to shake the feeling of being watched, you turn around to look behind you...
+    but all you can see is a never-ending darkness.`,
+    `
+    With each passing minute, it becomes harder and harder to breathe. 
+    The weight of the darkness, crushing.
+    Yet, you MUST finish what you came here to do.
+    The only problem is...you can't seem to remember what that is.`,
+    `
+    ${chalk.yellowBright('Do these numbers mean anything?')}, you wonder.
+    ${chalk.yellowBright('Some kind of code, perhaps?')}
+    ...But there doesn't seem to be any sort of pattern at all....`,
+    `
+    Out of nowhere, you realize you can't hear your watch ticking anymore.
+    Looking down at your wrist, you see it has stopped at exactly 12.
+    Could you really have been here that long?`,
+    `
+    Something keeps bugging you about what the proprieter said, 
+    but you can't put your finger on it. It was something about a deal.
+    ${chalk.yellowBright('What did he call it again?')} you think to yourself, ${chalk.yellowBright("A sick deal? No, that's not it....")}`,
+];
 
+s.fillerMaterial2 = [
+    `
+    ${chalk.yellowBright('What does any of this even mean?')} you wonder to yourself. 
+    ${chalk.yellowBright('The numbers, the letters, they make no sense!')} 
+    ${chalk.yellowBright('And YES? NO? Have we even asked the board a question?')}`,
+    `
+    You can't help but be unsettled by the board's last answer. 
+    ${chalk.yellowBright("Could it mean...? No, it couldn't possibly mean that!")}
+    Shaking your head, you try to regain your focus, but somthing keeps bugging you.
+    If only you could put your finger on it....`,
+    `
+    As the board answers, a slight damp breeze drifts across the room.
+    ${chalk.yellowBright('Could someone have opened a door?')}
+    No, there were no other doors to this room from what you remember.
+    ${chalk.yellowBright('Or were there?')} You realize you really don't remember anything about the room at all.`,
+    `
+    ${chalk.yellowBright('One, two, three...')} you count in your head, 
+    ${chalk.yellowBright('How many letters have there been? And numbers?')} 
+    Everything is blurring together in your mind.`,
+    `
+    From across the room you hear a CREEAAK.
+    ${chalk.yellowBright('Is that a door opening? Or perhaps a floorboard?')}
+    You realize you never saw the proprietor leave the room.
+    ${chalk.yellowBright('Could he still be here?')} you wonder.`,
+    `
+    Your shoulder aches.
+    Your eyes are strained and dry.
+    But the Ouija board is relentless.
+    It has other plans for you.`,
+    `
+    As you stare at the Ouija board, you notice that for a split second
+    your heart beats in time to its never-ending pulse.`,
+    `
+    You realize that you've been running through the same question in your head for what seems like hours:
+    ${chalk.yellowBright('Will I make it home?')}
+    Secretly, you wonder if the Ouija board has been reading your mind all along....`,
+    `
+    You see the pattern in the board's answers now,
+    you just can't seem to work out what it means.
+    But somehow, you know in your heart that the message is meant just for you.`,
 ];
 
 // Stories for villain dying
@@ -150,7 +230,42 @@ s.ending = [
     'The following morning, there was nothing left to suggest Terminal Gifts and Antiquities ever existed.',
     'In its place stood a small abandoned building, its interior in a tattered state of disarray.',
     'To look at it, one would never guess what took place the night before.',
-    "In fact, from a passerby's perspective, it appeared no living creature—save perhaps the rats—had set foot on the premises for well over 50 years.",
+    "In fact, from a passerby's perspective, it appeared no living creature—save perhaps the rats—",
+    "had set foot on the premises for well over 50 years.",
     'And yet, if one would venture further into the crumbling interior, they would come across something quite out of place amid the ruins...',
     'In the back of the building stood an empty room.  Empty, save for a single sheet of paper written, unmistakably, in blood...',
+];
+
+s.fight = [
+    format`
+    Suddenly and without warning, the Ouija board began to shake violently, 
+    causing the planchette to heat up beneath your hand.
+    You cry out in pain and rip your hand away from the board.
+    Looking up, you realize ${0} has done the same as you meet their gaze.
+    
+    Shoving the table out of the way, ${1} lunges at you, grasping frantically for your throat.
+
+    It is all you can do to jump backward in a desperate attempt to dodge the killer's advance.
+
+    But then, you feel your leg catch on your chair and your head slams down into the floorboards.
+
+
+
+
+    And everything goes black.
+    `
+];
+
+s.wakeUp = [
+    'The following morning, there was nothing left to suggest Terminal Gifts and Antiquities ever existed.',
+    'In its place stood a small abandoned building, its interior in a tattered state of disarray.',
+    'To look at it, one would never guess what took place the night before.',
+    "In fact, from a passerby's perspective, it appeared no living creature—save perhaps the rats—",
+    "had set foot on the premises for well over 50 years.\n",
+    'Around the corner in an empty alley, you wake with a jolt.  Everything has suddenly come back to you.',
+    'As you stand, you stare in disbelief at the vacant husk of a building.',
+    'Slowly, you open the door and make your way down the crumbling corridor.\n',
+    'In the back of the building you find the room.  Empty, now, save for a single sheet of paper written, unmistakably, in blood...\n',
+    `${chalk.red('Here lies the proof. Spirits exist.')}\n`,
+    'Shocked, you drop the paper, and as it floats to the floor it turns to reveal its true nature:'
 ];
