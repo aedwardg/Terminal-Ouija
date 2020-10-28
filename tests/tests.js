@@ -3,7 +3,7 @@
 const animations = require('../animations.js');
 const { sleep, narrate } = require('../animations.js');
 const story = require('../story.js');
-const { player, gameBoard } = require('../player.js');
+const { player } = require('../player.js');
 
 async function runTests() {
     player.name = 'Anonymous';

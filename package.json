@@ -2,7 +2,7 @@
   "name": "terminalouija",
   "version": "1.0.0",
   "description": "Terminal-based \"choose your own adventure\" with a dark twist. (Ages 10+)",
-  "main": "main.js",
+  "main": "index.js",
   "dependencies": {
     "chalk": "^4.1.0",
     "chalk-animation": "^1.6.0",
@@ -10,7 +10,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node ./tests/tests.js"
+    "test": "node ./tests/tests.js",
+    "start": "node ./index.js"
   },
   "repository": {
     "type": "git",
