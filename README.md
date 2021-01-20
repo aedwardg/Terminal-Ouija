@@ -21,8 +21,15 @@ This game was made entirely with the magic of [Node.js](https://nodejs.org/en/)
 The easiest way to experience the thrill and terror of Terminal Ouija is to check out the online REPL.
 
 1. Make your browser fullscreen
-2. [Start the REPL](https://terminal-ouija.elcocodrilo.repl.run/)
-3. Have fun
+2. [Start the REPL](https://repl.it/@elCocodrilo/Terminal-Ouija#index.js)
+    - The screen will be divided into three parts:
+    ![Repl.it screen](./Screenshot_1.png)
+3. Drag both dividers all the way to the left to make the console fullscreen:
+    - (The console needs to be full screen to properly view the animations)
+    ![Fullscreen console](./Screenshot_2.png)
+4. Press the green `Run` button
+5. Have fun
+![Opening Screen](./Screenshot_3.png)
 
 **Note: the opening animation isn't quite as smooth on the online REPL.  But hey, at least it's online.*
 
